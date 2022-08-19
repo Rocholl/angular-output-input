@@ -8,7 +8,7 @@ import { Player } from '../player';
 })
 export class JugadorComponent implements OnInit {
 
-  @Input() player: Player | any;
+  @Input() player: Player|any;
   @Output() playerSelected = new EventEmitter();
   @Output() prioritySelected = new EventEmitter();
   @Output() favouriteSelected = new EventEmitter();

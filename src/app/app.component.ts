@@ -6,10 +6,10 @@ import { Player } from './player';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(){
-    this.playerShow= this.players;
-
+  constructor() {
+    this.playerShow = this.players;
   }
+  title = 'examples';
 
   private players: Player[] = [
     {
@@ -143,51 +143,44 @@ export class AppComponent {
       better_call_saul_appearance: [],
     },
   ];
-  public playerShow:Player[]= [];
+  public playerShow: Player[] = [];
   public playersPrioritys: Player[] = [];
   public playersFavourites: Player[] = [];
-  title = 'examples';
-  public showAll():void {
+  public showAll(): void {
     this.playerShow = this.players;
   }
   public deletePlayer(event: Player): void {
-    this.playerShow = this.playerShow.filter((h) => h !== event);
-    this.playersPrioritys = this.playerShow.filter((h) => h !== event);
-    this.playersFavourites = this.playerShow.filter((h) => h !== event);
+    this.playerShow = this.playerShow.filter((h) => h.char_id !== event. char_id);
+    this.playersPrioritys = this.playerShow.filter((h) => h.char_id !== event. char_id);
+    this.playersFavourites = this.playerShow.filter((h) =>h.char_id !== event. char_id);
   }
+//tell me a joke
+
   public priorityPlayer(event: Player): void {
-    let i:number = 0;
+
+    let i = 0;
     this.playersPrioritys.forEach((player) => {
-      if(JSON.stringify(event)===JSON.stringify(player)){
-       i++
-
+      if (event.char_id === player.char_id) {
+        i++;
       }
-
-    })
-    if(i===0){
+    });
+    if (i === 0) {
       if (this.playersPrioritys.length < 3) {
         this.playersPrioritys.push(event);
       } else {
         this.playersPrioritys.pop();
         this.playersPrioritys.push(event);
       }
-    };
-
-
-
+    }
   }
   public favouritePlayer(event: Player): void {
-    let i:number = 0;
+    let i: number = 0;
     this.playersFavourites.forEach((player) => {
-      if(JSON.stringify(event)===JSON.stringify(player)){
-       i++
-
+      if (event.char_id === player.char_id) {
+        i++;
       }
-
-    })
-    if(i===0)this.playersFavourites.push(event);
-
-
+    });
+    if (i === 0) this.playersFavourites.push(event);
   }
   public showFavourites(): void {
     this.playerShow = this.playersFavourites;
