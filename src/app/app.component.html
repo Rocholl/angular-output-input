@@ -1,0 +1,16 @@
+<div>
+  <button (click)="showFavourites()">Favoritos</button>
+  <button (click)="showPriority()">Priority</button>
+  <button (click)="showAll()">Show All</button>
+</div>
+<h1>Players:</h1>
+<div *ngFor="let player of playerShow">
+  <app-jugador
+    [player]="player"
+    (playerSelected)="deletePlayer($event)"
+    (prioritySelected)="priorityPlayer($event)"
+    (favouriteSelected)="favouritePlayer($event)"
+
+  >
+  </app-jugador>
+</div>
